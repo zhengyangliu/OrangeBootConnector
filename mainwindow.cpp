@@ -122,10 +122,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->progressBar->setValue(0);
 
     /* 如果配置文件存在，则加载固件路径 */
-    QFileInfo file(QCoreApplication::applicationDirPath() + "config.ini");
+    QFileInfo file(QCoreApplication::applicationDirPath() + "/config.ini");
     if(file.exists() == true)
     {
-        QSettings *pIni = new QSettings(QCoreApplication::applicationDirPath() + "config.ini", QSettings::IniFormat);
+        QSettings *pIni = new QSettings(QCoreApplication::applicationDirPath() + "/config.ini", QSettings::IniFormat);
         QString file_path_log = pIni->value("/Log/FilePath").toString();
         delete pIni;
 
@@ -159,7 +159,7 @@ void MainWindow::on_pushButton_clicked()
             qDebug()<<fileNames<<endl;
 
             // 建立ini配置文件记录bin固件
-            QSettings *configIniWrite = new QSettings(QCoreApplication::applicationDirPath() + "config.ini", QSettings::IniFormat);
+            QSettings *configIniWrite = new QSettings(QCoreApplication::applicationDirPath() + "/config.ini", QSettings::IniFormat);
             configIniWrite->setValue("/Log/FilePath", fileNames);
             delete configIniWrite;
         }
